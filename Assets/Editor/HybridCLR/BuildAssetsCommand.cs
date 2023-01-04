@@ -1,10 +1,6 @@
 ﻿using HybridCLR.Editor.Commands;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -49,14 +45,10 @@ namespace HybridCLR.Editor
             List<AssetBundleBuild> abs = new List<AssetBundleBuild>();
 
             {
-                var prefabAssets = new List<string>();
-                string testPrefab = $"{Application.dataPath}/Prefabs/HotUpdatePrefab.prefab";
-                prefabAssets.Add(testPrefab);
-                AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
                 abs.Add(new AssetBundleBuild
                 {
-                    assetBundleName = "prefabs",
-                    assetNames = prefabAssets.Select(s => ToRelativeAssetPath(s)).ToArray(),
+                    assetBundleName = "scenes",
+                    assetNames = new []{ "Assets/Scenes/HotUpdate.unity" }
                 });
             }
 
@@ -132,7 +124,7 @@ namespace HybridCLR.Editor
             string streamingAssetPathDst = Application.streamingAssetsPath;
             Directory.CreateDirectory(streamingAssetPathDst);
             string outputDir = GetAssetBundleOutputDirByTarget(target);
-            var abs = new string[] { "prefabs" };
+            var abs = new string[] { "scenes" };
             foreach (var ab in abs)
             {
                 string srcAb = ToRelativeAssetPath($"{outputDir}/{ab}");
