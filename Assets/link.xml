@@ -1,3 +1,7 @@
 <linker>
 	<assembly fullname="Main" preserve="all" />
+	
+	<!-- 添加下面两行， 来保证HotUpdate下的代码不被裁剪 -->
+	<assembly fullname="mscorlib" preserve="all" />
+	<assembly fullname="UnityEngine.CoreModule" preserve="all" />
 </linker>
