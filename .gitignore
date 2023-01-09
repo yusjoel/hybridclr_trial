@@ -39,3 +39,6 @@ Build-Mac
 /Assets/StreamingAssets
 _ReSharper.Caches
 UserSettings
+Packages/packages-lock.json
+Assets/StreamingAssets.meta
+*.apk
